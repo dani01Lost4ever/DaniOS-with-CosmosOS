@@ -7,52 +7,56 @@ using System.Drawing;
 using Cosmos.System.Graphics.Fonts;
 using System.IO;
 using Cosmos.System.FileSystem.Listing;
+using CosmosKernel1.FileMethods;
+using CosmosKernel1.GeneralMethods;
 
 namespace CosmosKernel1
 {
     public class Kernel : Sys.Kernel
     {
-        //Canvas canvas;
-        Sys.FileSystem.CosmosVFS fs = new Cosmos.System.FileSystem.CosmosVFS();
+        public FileManager fileManager = new FileManager();
+        public GeneralManager generalManager = new GeneralManager();
+        public features features = new features();
+        readonly Sys.FileSystem.CosmosVFS fs = new Cosmos.System.FileSystem.CosmosVFS();
+        
 
         protected override void BeforeRun()
         {
             Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
             Console.WriteLine("Cosmos booted successfully.");
-            FileSysOverview();
         }
 
         protected override void Run()
         {
             try
             {
-                Console.WriteLine("File Overview Finished");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                mDebugger.Send("Exception occurred: " + e.Message);
-                mDebugger.Send(e.Message);
-                Stop();
-            }
-        }
+                Console.WriteLine("Available ops: ");
+                foreach (var feature in features.FeaturesList())
+                {
+                    Console.Write(feature + " ");
+                }
+                Console.WriteLine("\nSelect the operation:");
+                string input = Console.ReadLine();
 
-        protected void FileSysOverview()
-        {
-            try
-            {
-                var available_space = fs.GetAvailableFreeSpace(@"0:\");
-                Console.WriteLine("Available Free Space: " + available_space * 1e-6 + "MB");
-                var files_list = Directory.GetFiles(@"0:\");
-                var directory_list = Directory.GetDirectories(@"0:\");
-                foreach (var file in files_list)
+                switch (input)
                 {
-                    Console.WriteLine("FILE:  " + file);
+                    case "FileSysOverview":
+
+                        fileManager.FileSysOverview(fs);
+                        break;
+
+                    case "CreateNewFile":
+                        fileManager.CreateNewFile();
+                        break;
+
+                    case "Exit":
+                        bool userChoice = generalManager.Exit();
+                        if (userChoice) Stop();                    
+                        break;
+
+                    default: Console.WriteLine("wrong input: ", input); break;
                 }
-                foreach (var directory in directory_list)
-                {
-                    Console.WriteLine("DIR: " + directory);
-                }
+                //https://stackoverflow.com/questions/7712137/array-containing-methods
             }
             catch (Exception e)
             {
