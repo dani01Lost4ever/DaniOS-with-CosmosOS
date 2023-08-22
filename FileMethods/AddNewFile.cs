@@ -25,5 +25,34 @@ namespace CosmosKernel1.FileMethods
                 return false;
             }
         }
+        public bool WriteFile() {
+            Console.WriteLine("Enter the Path of the file to write: ");
+            string path = Console.ReadLine();
+            Console.WriteLine("Scrivi il contenuto da aggiungere a " + path + " : ");
+            string content= Console.ReadLine();
+            try
+            {
+                File.WriteAllText(@"0:\"+ path, content);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+        }
+        public void ReadFile()
+        {
+            Console.WriteLine("Name of the file to read: ");
+            string path = Console.ReadLine(); 
+            try
+            {
+                Console.WriteLine(File.ReadAllText(@"0:\" + path));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
     }
 }

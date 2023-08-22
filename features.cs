@@ -19,5 +19,14 @@ namespace CosmosKernel1
             return features;
             
         }
+        public void DisplayFeatures()
+        {
+            var i = 0;
+            foreach (var feature in FeaturesList())
+            {
+                Console.Write(i+".: "+feature + "\n");
+                i++;
+            }
+        }
     }
 }

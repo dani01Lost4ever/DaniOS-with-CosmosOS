@@ -8,7 +8,7 @@ namespace CosmosKernel1.FileMethods
     {
         private FileSysOverview fileSysOverview = new FileSysOverview();
         private AddNewFile AddNewFile = new AddNewFile();
-        public string[] FileFeatures = ["FileSysOverview", "CreateNewFile"];
+        public string[] FileFeatures = ["FileSysOverview", "CreateNewFile", "WriteFile", "ReadFile"];
         public void FileSysOverview(Sys.FileSystem.CosmosVFS fs)
         {
             fileSysOverview.FileSysOverviewMethod(fs);
@@ -16,6 +16,14 @@ namespace CosmosKernel1.FileMethods
         public bool CreateNewFile()
         {
             return AddNewFile.CreateFile();
+        }
+        public bool WriteFile() 
+        { 
+            return AddNewFile.WriteFile(); 
+        }
+        public void ReadFile()
+        {
+            AddNewFile.ReadFile();
         }
     }
 }

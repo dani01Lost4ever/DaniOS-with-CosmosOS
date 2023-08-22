@@ -31,10 +31,7 @@ namespace CosmosKernel1
             try
             {
                 Console.WriteLine("Available ops: ");
-                foreach (var feature in features.FeaturesList())
-                {
-                    Console.Write(feature + " ");
-                }
+                features.DisplayFeatures();
                 Console.WriteLine("\nSelect the operation:");
                 string input = Console.ReadLine();
 
@@ -49,6 +46,12 @@ namespace CosmosKernel1
                         fileManager.CreateNewFile();
                         break;
 
+                    case "WriteFile":
+                        fileManager.WriteFile();
+                        break;
+                    case "ReadFile":
+                        fileManager.ReadFile();
+                        break;
                     case "Exit":
                         bool userChoice = generalManager.Exit();
                         if (userChoice) Stop();                    
