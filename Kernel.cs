@@ -33,33 +33,79 @@ namespace CosmosKernel1
                 Console.WriteLine("Available ops: ");
                 features.DisplayFeatures();
                 Console.WriteLine("\nSelect the operation:");
-                string input = Console.ReadLine();
+                //string input = Console.ReadLine();
 
-                switch (input)
+                //switch (input)
+                //{
+                //    case "FileSysOverview":
+
+                //        fileManager.FileSysOverview(fs);
+                //        break;
+
+                //    case "CreateNewFile":
+                //        fileManager.CreateNewFile();
+                //        break;
+
+                //    case "WriteFile":
+                //        fileManager.WriteFile();
+                //        break;
+                //    case "ReadFile":
+                //        fileManager.ReadFile();
+                //        break;
+                //    case "Exit":
+                //        bool userChoice = generalManager.Exit();
+                //        if (userChoice) Stop();                    
+                //        break;
+
+                //    default: Console.WriteLine("wrong input: ", input); break;
+                //}
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                if (keyInfo.Key == ConsoleKey.D0 || keyInfo.Key == ConsoleKey.NumPad0)
                 {
-                    case "FileSysOverview":
-
-                        fileManager.FileSysOverview(fs);
-                        break;
-
-                    case "CreateNewFile":
-                        fileManager.CreateNewFile();
-                        break;
-
-                    case "WriteFile":
-                        fileManager.WriteFile();
-                        break;
-                    case "ReadFile":
-                        fileManager.ReadFile();
-                        break;
-                    case "Exit":
-                        bool userChoice = generalManager.Exit();
-                        if (userChoice) Stop();                    
-                        break;
-
-                    default: Console.WriteLine("wrong input: ", input); break;
+                    Console.Clear();
+                    fileManager.FileSysOverview(fs);
+                    Console.WriteLine("-------------------------------\n\n");
+                    return;
+                        
                 }
-                //https://stackoverflow.com/questions/7712137/array-containing-methods
+                else if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
+                {
+                    Console.Clear();
+                    fileManager.CreateNewFile();
+                    Console.WriteLine("-------------------------------\n\n");
+                    return;
+
+                }
+                else if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.NumPad2)
+                {
+                    Console.Clear();
+                    fileManager.WriteFile();
+                    Console.WriteLine("-------------------------------\n\n");
+                    return;
+
+                }
+                else if (keyInfo.Key == ConsoleKey.D3 || keyInfo.Key == ConsoleKey.NumPad3)
+                {
+                    Console.Clear();
+                    fileManager.ReadFile();
+                    Console.WriteLine("-------------------------------\n\n");
+                    return;
+
+                }
+                else if (keyInfo.Key == ConsoleKey.D4 || keyInfo.Key == ConsoleKey.NumPad4)
+                {
+                    Console.Clear();
+                    fileManager.FileGen();
+                }
+                else if (keyInfo.Key == ConsoleKey.D5 || keyInfo.Key == ConsoleKey.NumPad5)
+                {
+                    Console.Clear();
+                    bool userChoice = generalManager.Exit();
+                    if (userChoice) Stop();     
+                }
+                
+
             }
             catch (Exception e)
             {

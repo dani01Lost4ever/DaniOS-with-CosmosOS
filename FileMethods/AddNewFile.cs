@@ -10,6 +10,7 @@ namespace CosmosKernel1.FileMethods
             try
             {
                 Console.WriteLine("Enter the name of the file: ");
+                Console.Write(@"0:\> ");
                 string filename = Console.ReadLine();
                 if (!string.IsNullOrEmpty(filename))
                 {
@@ -27,6 +28,7 @@ namespace CosmosKernel1.FileMethods
         }
         public bool WriteFile() {
             Console.WriteLine("Enter the Path of the file to write: ");
+            Console.Write(@"0:\> ");
             string path = Console.ReadLine();
             Console.WriteLine("Scrivi il contenuto da aggiungere a " + path + " : ");
             string content= Console.ReadLine();
@@ -44,6 +46,7 @@ namespace CosmosKernel1.FileMethods
         public void ReadFile()
         {
             Console.WriteLine("Name of the file to read: ");
+            Console.Write(@"0:\> ");
             string path = Console.ReadLine(); 
             try
             {
