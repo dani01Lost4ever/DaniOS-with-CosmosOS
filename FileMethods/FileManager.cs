@@ -30,7 +30,7 @@ namespace CosmosKernel1.FileMethods
         {
             Console.WriteLine("Name of the Folder: ");
             Console.Write(@"0:\> ");
-            string path=Console.ReadLine();
+            string path= @"0:\" + Console.ReadLine();
             Console.WriteLine("MaxDepth:");
             string maxDepth=Console.ReadLine();
             Console.WriteLine("MaxFiles:");

@@ -28,37 +28,12 @@ namespace CosmosKernel1
 
         protected override void Run()
         {
+            generalManager.Scroll();
             try
             {
                 Console.WriteLine("Available ops: ");
                 features.DisplayFeatures();
                 Console.WriteLine("\nSelect the operation:");
-                //string input = Console.ReadLine();
-
-                //switch (input)
-                //{
-                //    case "FileSysOverview":
-
-                //        fileManager.FileSysOverview(fs);
-                //        break;
-
-                //    case "CreateNewFile":
-                //        fileManager.CreateNewFile();
-                //        break;
-
-                //    case "WriteFile":
-                //        fileManager.WriteFile();
-                //        break;
-                //    case "ReadFile":
-                //        fileManager.ReadFile();
-                //        break;
-                //    case "Exit":
-                //        bool userChoice = generalManager.Exit();
-                //        if (userChoice) Stop();                    
-                //        break;
-
-                //    default: Console.WriteLine("wrong input: ", input); break;
-                //}
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
                 if (keyInfo.Key == ConsoleKey.D0 || keyInfo.Key == ConsoleKey.NumPad0)

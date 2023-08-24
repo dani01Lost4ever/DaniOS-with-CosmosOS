@@ -51,6 +51,7 @@ namespace CosmosKernel1.FileMethods
 
         public void FileSysOverviewMethod(Sys.FileSystem.CosmosVFS fs)
         {
+            Console.Clear();
             try
             {
                 var available_space = fs.GetAvailableFreeSpace(@"0:\");
